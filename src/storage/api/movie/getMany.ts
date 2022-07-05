@@ -1,45 +1,49 @@
 
-// import { UserEntity } from "../../entities/users";
-// import { RefreshTokenEntity } from "../../entities/refresh_token";
-// import {
-//   IGetManyAccessTokenArgs,
-//   IAccessToken,
-// } from "./types";
-// import { entityToOutType } from "./entityToOutType";
-// import { AccessTokenEntity } from "../../entities/movie";
+import { MoiveEntity } from "../../entities/movie";
+import {
+  IGetManyMovieResult,
+  IGetManyMovieArgs,
+} from "./types";
+import { entityToOutType } from "./entityToOutType";
 
 
-// export async function getMany(args: IGetManyAccessTokenArgs): Promise<IAccessToken[]> {
-//   const {
-//     user_id,
-//     token,
-//   } = args;
+export async function getMany(args: IGetManyMovieArgs): Promise<IGetManyMovieResult> {
+  const {
+    user_id,
+    created_at_from,
+    created_at_to,
+    limit,
+    offset,
+  } = args;
 
-//   const query = AccessTokenEntity.Repository.createQueryBuilder('acc_token');
+  console.log("get many>>>>> args: ", args);
 
-//   query.leftJoinAndMapOne(
-//     'acc_token.user',
-//     UserEntity,
-//     'user',
-//     'acc_token.user_id = user.id',
-//   );
+  const query = MoiveEntity.Repository.createQueryBuilder('movie');
 
-//   query.leftJoinAndMapOne(
-//     'acc_token.refresh_token',
-//     RefreshTokenEntity,
-//     'refresh_token',
-//     'acc_token.refresh_token_id = refresh_token.id',
-//   );
+  if (user_id !== undefined) {
+    query.andWhere("movie.user_id = :user_id", { user_id });
+  }
 
-//   if (user_id !== undefined) {
-//     query.andWhere("user.id = :user_id", { user_id });
-//   }
+  if (created_at_from !== undefined) {
+    query.andWhere("movie.created_at >= :created_at_from", { created_at_from });
+  }
 
-//   if (token !== undefined) {
-//     query.andWhere("acc_token.value = :token", { token });
-//   }
+  if (created_at_to !== undefined) {
+    query.andWhere("movie.created_at <= :created_at_to", { created_at_to });
+  }
 
-//   const tokens = await query.getMany();
+  if (limit !== undefined) {
+    query.take(limit);
+  }
 
-//   return tokens.map(entityToOutType);
-// }
+  if (offset !== undefined) {
+    query.skip (offset);
+  }
+
+  const [moives, all_count] = await Promise.all([query.getMany(), query.getCount()]);
+
+  return {
+    movies: moives.map(entityToOutType),
+    all_count,
+  }
+}

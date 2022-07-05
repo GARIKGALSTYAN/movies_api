@@ -4,7 +4,7 @@ import body_parser from "body-parser";
 import { initStorageConnection } from "./storage";
 import { authMiddlware } from "./middleware";
 import { HTTPError } from "./utils";
-import { movie_router } from "./service";
+import { movie_router, movie_router_root } from "./service";
 import { SERVER_CONFIG } from "./env.config";
 
 
@@ -19,7 +19,7 @@ const app = express();
 app.use(body_parser.json());
 
 app.use(authMiddlware);
-app.use("/movie", movie_router);
+app.use(movie_router_root, movie_router);
 
 app.use((error: HTTPError, req: Request, res: Response, next: NextFunction) => {
   try {

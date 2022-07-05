@@ -17,5 +17,13 @@ export interface ICreateMoiveArgs {
 
 export interface IGetManyMovieArgs {
   user_id: undefined | number;
-  title: undefined | string
+  created_at_from: undefined | Date,
+  created_at_to: undefined | Date,
+  limit: undefined | number,
+  offset: undefined | number,
+}
+
+export interface IGetManyMovieResult {
+  movies: Array<IMovie>;
+  all_count: number;
 }
