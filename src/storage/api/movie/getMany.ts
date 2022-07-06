@@ -16,8 +16,6 @@ export async function getMany(args: IGetManyMovieArgs): Promise<IGetManyMovieRes
     offset,
   } = args;
 
-  console.log("get many>>>>> args: ", args);
-
   const query = MoiveEntity.Repository.createQueryBuilder('movie');
 
   if (user_id !== undefined) {

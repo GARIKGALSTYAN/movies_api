@@ -6,11 +6,11 @@
   "author": "Garik Galstyan",
   "license": "MIT",
   "scripts": {
-    "preinstall": "rm -rf dist",
-    "build": "tsc",
+    "remove_dist": "rm -rf dist",
+    "build": "yarn remove_dist && tsc",
     "start": "node dist/index.js",
     "dev": "yarn lint && yarn build && yarn start",
-    "lint": "eslint ."
+    "lint": "eslint . --max-warnings=0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

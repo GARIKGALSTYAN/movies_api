@@ -7,9 +7,6 @@ export async function getMoiveDetails(title: string) {
 
   const responce = await axios.get(request_endpoint);
 
-  console.log("getMoiveDetails responce: ", responce);
-  console.log("getMoiveDetails responce.data: ", responce.data);
-
   if (!responce.data) {
     throw new Error("Can't get movie details");
   }

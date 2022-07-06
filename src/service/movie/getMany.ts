@@ -1,26 +1,9 @@
-import express, { NextFunction, Request, Response } from "express";
-import {
-  validate,
-  validateOrReject,
-  Contains,
-  IsInt,
-  Length,
-  IsEmail,
-  IsFQDN,
-  IsDate,
-  IsString,
-  Min,
-  Max,
-} from 'class-validator';
+import {Request } from "express";
 import { AppResponce, HTTPMethod, RouteConfig } from "../../types";
 import { StorageAPI } from "../../storage";
-import { HTTPError } from "../../utils";
-import { getMoiveDetails } from "../../third_parties/omdb_api";
 
 
 async function getMany(req: Request, res: AppResponce) {
-    console.log("moive get many call", res.locals);
-
     const user_movies = await StorageAPI.Movie.getMany({
         user_id: res.locals.userId,
         limit: undefined,

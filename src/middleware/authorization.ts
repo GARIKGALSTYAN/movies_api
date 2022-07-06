@@ -28,17 +28,11 @@ export async function authMiddlware(req: Request, res: Response, next: NextFunct
 
         next();
     } catch (error) {
-        console.log("err: ", error)
-        
-
         let error_message = "Authorization failed";
 
         if (error instanceof Error && error.message) {
-            console.log("err----->>: ", error.message)
             error_message = error.message;
         }
-
-        console.log("new HTTPError(error_message, 401): ", new HTTPError(error_message, 401))
 
         next(new HTTPError(error_message, 401));
     }
