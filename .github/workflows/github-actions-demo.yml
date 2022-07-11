@@ -23,11 +23,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: config ...
-    - run: |
-        ls
-        pwd
-        tree -L 2
+    # - name: config ...
+    # - run: |
+    #     ls
+    #     pwd
+    #     tree -L 2
 
     - name: Create ENV files
       working-directory: ./movies
