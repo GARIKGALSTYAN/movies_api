@@ -23,8 +23,6 @@ async function createMovie({ jwt_token, title }) {
 
     return data;
   } catch (error) {
-    console.log("createMovie error:", responce);
-
     let error_message = error.message;
     if (error.responce && error.response.data) {
       error_message += ( " / " + error.response.data );
