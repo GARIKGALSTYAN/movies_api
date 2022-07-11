@@ -45,12 +45,12 @@ jobs:
         yarn build
         yarn lint
 
-    # - name: Create Auth container
-    #   working-directory: ./auth
-    #   run: |
-    #     ls
-    #     pwd
-    #     docker-compose up -d
+    - name: Create Auth container
+      working-directory: auth
+      run: |
+        ls
+        pwd
+        docker-compose up -d
 
     - name: Create Movie API containers
       working-directory: movies
