@@ -31,19 +31,14 @@ jobs:
     - name: Create Auth container
       working-directory: auth
       run: |
-        ls
-        pwd
         npm i
         docker-compose up --build -d
         docker-compose ps
         docker-compose logs
-        ls
 
     - name: Build movies API
       working-directory: movies
       run: |
-        ls
-        pwd
         yarn
         yarn build
         yarn lint
@@ -51,13 +46,10 @@ jobs:
     - name: Create Movie API containers
       working-directory: movies
       run: |
-        ls
         docker-compose up -d
         docker-compose ps
 
     - name: Run tests
       working-directory: movies
       run: |
-        ls
-        pwd
         node tests/index.js
