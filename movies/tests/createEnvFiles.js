@@ -43,4 +43,7 @@ OMDBAPI_KEY=${ENV_VAR.OMDBAPI_KEY}
 fs.writeFileSync(auth_env_path_absolute, auth_env_content);
 fs.writeFileSync(movies_env_path_absolute, movie_env_content);
 
+console.log({ auth_env_path_absolute });
+console.log({ movies_env_path_absolute });
+
 module.exports = { ENV_VAR };

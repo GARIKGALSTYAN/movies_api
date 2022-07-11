@@ -36,6 +36,13 @@ jobs:
         pwd
         node tests/createEnvFiles.js
 
+    - name: Create Auth container
+      working-directory: auth
+      run: |
+        ls
+        pwd
+        docker-compose up -d
+
     - name: Build movies API
       working-directory: movies
       run: |
@@ -45,18 +52,10 @@ jobs:
         yarn build
         yarn lint
 
-    - name: Create Auth container
-      working-directory: auth
-      run: |
-        ls
-        pwd
-        docker-compose up -d
-
     - name: Create Movie API containers
       working-directory: movies
       run: |
         ls
-        pwd
         docker-compose up -d
 
     - name: Run tests
