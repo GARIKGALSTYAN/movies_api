@@ -34,6 +34,7 @@ const MOVIE_TITLES = [
         });
         console.log("Created movie for basic user, with id:", movie.id);
       } catch (error) {
+        console.log("error:", error);
         console.log("Basic user accout test error: ", error.message);
       }
     }

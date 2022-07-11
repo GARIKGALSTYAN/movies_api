@@ -4,6 +4,7 @@ const { ENV_VAR } = require("./envConfig");
 
 async function createMovie({ jwt_token, title }) {
   try {
+    console.log("createMovie call: ", { jwt_token, title });
     const responce = await axios.post(`http://0.0.0.0:${ENV_VAR.MOVIE_API_SERVER_PORT_EXTERNAL}/movie`,
       {
         title,
@@ -14,6 +15,7 @@ async function createMovie({ jwt_token, title }) {
         },
       }
     );
+    console.log("post req", title);
 
     console.log("respoce:", responce);
 
