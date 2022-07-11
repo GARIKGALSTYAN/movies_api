@@ -8,6 +8,7 @@ import { movie_router, movie_router_root } from "./service";
 import { SERVER_CONFIG } from "./env.config";
 import { AppLogger } from "./utils/logger";
 
+const unused_variable = "test";
 
 const init_connection_interval = setInterval(() => {
   initStorageConnection()
