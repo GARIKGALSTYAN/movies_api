@@ -26,11 +26,15 @@ jobs:
     - name: Create ENV files
       working-directory: ./movies
       run: |
+        ls
+        pwd
         node tests/createEnvFiles.js
 
     - name: Build movies API
       working-directory: movies
       run: |
+        ls
+        pwd
         yarn
         yarn build
         yarn lint
@@ -38,14 +42,20 @@ jobs:
     - name: Create Auth container
       working-directory: auth
       run: |
+        ls
+        pwd
         docker-compose up -d
 
     - name: Create Movie API containers
       working-directory: movies
       run: |
+        ls
+        pwd
         docker-compose up -d
 
     - name: Run tests
       working-directory: movies
       run: |
+        ls
+        pwd
         node tests/index.js
