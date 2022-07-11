@@ -1,6 +1,6 @@
 /* eslint-disable */
 const axios = require("axios");
-const { ENV_VAR } = require("./createEnvFiles");
+const { ENV_VAR } = require("./envConfig");
 
 function getPremiumUserJWTToken() {
   return getJWTToken("premium-jim", "GBLtTyq3E_UNjFnpo9m6");

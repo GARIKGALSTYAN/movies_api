@@ -24,15 +24,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Create ENV files
-      working-directory: ./movies
+      working-directory: ./movies/tests
       run: |
-        node tests/createEnvFiles.js
+        node createEnvFiles.js
 
     - name: Create Auth container
       working-directory: auth
       run: |
-        docker-compose up --build -d
         ls
+        pwd
+        docker-compose up --build -d
         docker-compose ps
 
     - name: Build movies API

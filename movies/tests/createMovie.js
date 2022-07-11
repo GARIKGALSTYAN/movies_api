@@ -1,6 +1,6 @@
 /* eslint-disable */
 const axios = require("axios");
-const { ENV_VAR } = require("./createEnvFiles");
+const { ENV_VAR } = require("./envConfig");
 
 async function createMovie({ jwt_token, title }) {
   try {
