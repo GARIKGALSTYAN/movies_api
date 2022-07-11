@@ -22,13 +22,15 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-      working-directory: ./movies
-    - run: yarn
-      working-directory: ./movies
-    - run: yarn build
-      working-directory: ./movies
-    - run: yarn lint
+        # cache: 'yarn'
+    - name: Build movies API
+      working-directory: movies
+      run: |
+        yarn
+        yarn build
+        yarn lint
+
     - name: Create containers
       working-directory: ./movies
-      run: docker-compose up -d
+      run: |
+        docker-compose up -d
