@@ -27,6 +27,7 @@ const MOVIE_TITLES = [
 
     for (let i = 0; i < MOVIE_TITLES.length; i++) {
       try {
+        console.log(MOVIE_TITLES[i]);
         const movie = await createMovie({
           jwt_token: basic_user_jwt_token,
           title: MOVIE_TITLES[i],
