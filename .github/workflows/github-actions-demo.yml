@@ -22,7 +22,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    -run: tree -L 2
+
+    - name: config ...
+    - run: |
+      ls
+      pwd
+      tree -L 2
 
     - name: Create ENV files
       working-directory: ./movies
@@ -41,7 +46,7 @@ jobs:
         yarn lint
 
     - name: Create Auth container
-      working-directory: auth
+      working-directory: ./auth
       run: |
         ls
         pwd
