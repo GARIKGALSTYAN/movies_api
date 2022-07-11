@@ -11,7 +11,7 @@ function getBasicUserJWTToken() {
 }
 
 async function getJWTToken(username, password) {
-  const responce = await axios.post(`http://localhost:${ENV_VAR.AUTH_APP_PORT}/auth`, {
+  const responce = await axios.post(`http://0.0.0.0:${ENV_VAR.AUTH_APP_PORT}/auth`, {
     username,
     password,
   });

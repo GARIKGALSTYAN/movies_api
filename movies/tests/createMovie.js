@@ -4,7 +4,7 @@ const { ENV_VAR } = require("./createEnvFiles");
 
 async function createMovie({ jwt_token, title }) {
   try {
-    const responce = await axios.post(`http://localhost:${ENV_VAR.MOVIE_API_SERVER_PORT_EXTERNAL}/movie`,
+    const responce = await axios.post(`http://0.0.0.0:${ENV_VAR.MOVIE_API_SERVER_PORT_EXTERNAL}/movie`,
     {
       title,
     },
