@@ -36,16 +36,16 @@ jobs:
         yarn lint
 
     - name: Create Auth container
-      working-directory: ./auth
+      working-directory: auth
       run: |
         docker-compose up -d
 
     - name: Create Movie API containers
-      working-directory: ./movies
+      working-directory: movies
       run: |
         docker-compose up -d
 
     - name: Run tests
-      working-directory: ./movies
+      working-directory: movies
       run: |
         node tests/index.js
