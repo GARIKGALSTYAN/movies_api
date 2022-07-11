@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    -run: tree -L 2
 
     - name: Create ENV files
       working-directory: ./movies
